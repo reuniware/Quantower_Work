@@ -8,7 +8,7 @@ using TradingPlatform.BusinessLayer;
 namespace Indicator1
 {
     /// <summary>
-    /// An example of kijun sen indicator. Add your code, compile it and use on the charts in the assigned trading terminal.
+    /// An example of blank indicator. Add your code, compile it and use on the charts in the assigned trading terminal.
     /// Information about API you can find here: http://api.quantower.com
     /// Code samples: https://github.com/Quantower/Examples
     /// </summary>
@@ -25,10 +25,10 @@ namespace Indicator1
             Description = "My indicator's annotation";
 
             // Defines line on demand with particular parameters.
-            AddLineSeries("line1", Color.CadetBlue, 1, LineStyle.Solid);
+            AddLineSeries("kijun_sen", Color.CadetBlue, 1, LineStyle.Solid);
 
             // Defines line on demand with particular parameters.
-            AddLineSeries("line2", Color.Green, 1, LineStyle.Solid);
+            AddLineSeries("tenkan_sen", Color.Green, 1, LineStyle.Solid);
 
             // Defines line on demand with particular parameters.
             AddLineSeries("line2", Color.Honeydew, 1, LineStyle.Solid);
@@ -74,8 +74,26 @@ namespace Indicator1
             }
             double kijun = (higher26 + lower26) / 2;
 
-            // Set value to the "SMA" line buffer.
-            SetValue(kijun);
+            double higher9 = GetPrice(PriceType.High, 0);
+            double lower9 = GetPrice(PriceType.Low, 0);
+            for (int x = 1; x < 9; x++)
+            {
+                double high = GetPrice(PriceType.High, x);
+                if (high > higher9)
+                {
+                    higher9 = high;
+                }
+                double low = GetPrice(PriceType.Low, x);
+                if (low < lower9)
+                {
+                    lower9 = low;
+                }
+            }
+            double tenkan = (higher9 + lower9) / 2;
+
+
+            SetValue(kijun, 0);
+            SetValue(tenkan, 1);
 
         }
     }
