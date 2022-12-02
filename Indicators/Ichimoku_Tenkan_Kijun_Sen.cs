@@ -1,4 +1,4 @@
-// Copyright InvestDataSystems/Reuniware LLC. © 2022. All rights reserved.
+// Copyright InvestDataSystems/Reuniware. © 2022. All rights reserved.
 
 using System;
 using System.Diagnostics;
@@ -59,14 +59,14 @@ namespace Indicator1
 
             double higher26 = GetPrice(PriceType.High, 0);
             double lower26 = GetPrice(PriceType.Low, 0);
-            for (int x=1;x<27;x++)
+            for (int y=1;y<27;y++)
             {
-                double high = GetPrice(PriceType.High, x);
+                double high = GetPrice(PriceType.High, y);
                 if (high > higher26)
                 {
                     higher26 = high;
                 }
-                double low = GetPrice(PriceType.Low, x);
+                double low = GetPrice(PriceType.Low, y);
                 if (low < lower26)
                 {
                     lower26 = low;
@@ -76,14 +76,14 @@ namespace Indicator1
 
             double higher9 = GetPrice(PriceType.High, 0);
             double lower9 = GetPrice(PriceType.Low, 0);
-            for (int x = 1; x < 9; x++)
+            for (int y = 1; y < 9; y++)
             {
-                double high = GetPrice(PriceType.High, x);
+                double high = GetPrice(PriceType.High, y);
                 if (high > higher9)
                 {
                     higher9 = high;
                 }
-                double low = GetPrice(PriceType.Low, x);
+                double low = GetPrice(PriceType.Low, y);
                 if (low < lower9)
                 {
                     lower9 = low;
